@@ -1,12 +1,133 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Three.js Path Walker</title>
-  </head>
-  <body>
-    <canvas id="app"></canvas>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path Walker Game</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .main-container {
+            display: flex;
+            gap: 20px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .left-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        #description {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            overflow-y: auto;
+            max-height: 40vh;
+        }
+
+        #map2d-container {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            flex: 1;
+            min-height: 40vh;
+            overflow-y: auto;
+        }
+
+        #game-container {
+            flex: 2;
+            position: relative;
+            height: 80vh;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #00ff00;
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+        }
+
+        h2 {
+            color: #FF9800;
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 3px rgba(255, 152, 0, 0.5);
+            border-bottom: 2px solid rgba(255, 152, 0, 0.3);
+            padding-bottom: 5px;
+        }
+
+        pre {
+            color: #fff;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 1200px) {
+            .main-container {
+                flex-direction: column;
+            }
+            
+            #description, #map2d-container, #game-container {
+                max-height: none;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="left-column">
+            <div id="description">
+                <h1 style="color: #00ff00; font-size: 28px; font-weight: bold; text-align: center; margin-bottom: 20px; text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);">Path Walker Game</h1>
+                <h2>How to Play</h2>
+                <p>Navigate through the maze to collect letters in the correct order.</p>
+                <p>Use the arrow keys to move the green ball.</p>
+                <p>Collect letters in the order: A → C → B</p>
+                <p>Reach the orange X to complete the level.</p>
+
+                <h2>Visual Guide</h2>
+                <ul>
+                    <li><span style="color: #00ff00">Green ball</span> - You</li>
+                    <li><span style="color: #ff0000">Red letters</span> - Uncollected letters</li>
+                    <li><span style="color: #00ff00">Green letters</span> - Collected letters</li>
+                    <li><span style="color: #FF9800">Orange X</span> - End point</li>
+                </ul>
+
+                <h2>Objective</h2>
+                <p>Find the correct path to collect all letters in order and reach the end point.</p>
+            </div>
+            <div id="map2d-container"></div>
+        </div>
+        <div id="game-container">
+            <script type="module" src="/src/main.ts"></script>
+        </div>
+    </div>
+</body>
 </html>
